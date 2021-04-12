@@ -1,6 +1,6 @@
-Britnie Philips
+//Britnie Philips
 
-as2_geo
+//as2_geo
 double sphere_volume(double radius) { return 1.33333333 * 3.14159 * radius * radius * radius; }
 double cube_surface_area(double edge) { return 6 * edge * edge; }
 
@@ -54,7 +54,7 @@ int main(void)
 }
 
 
-as2_invest
+//as2_invest
 #include <stdio.h>
 
 int main(void)
