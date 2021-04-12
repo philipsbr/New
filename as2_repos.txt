@@ -1,0 +1,105 @@
+Britnie Philips
+
+as2_geo
+double sphere_volume(double radius) { return 1.33333333 * 3.14159 * radius * radius * radius; }
+double cube_surface_area(double edge) { return 6 * edge * edge; }
+
+int main(void)
+{
+
+  double option;
+  double side, radius, edge;
+
+  do {
+
+    // present the menu to the user, accept option input
+    printf("1) Compute the area of a square \n");
+    printf("2) Compute the volume of a sphere \n");
+    printf("3) Compute the surface area of a cube \n");
+    printf("4) Quit \n");
+    printf("Enter an option: ");
+    scanf("%d", &option);
+    printf("\n");
+
+    // Handle each menu option by caling the appropriate function
+    switch (option)
+    {
+      case 1:
+      printf("Enter the side length (cm): ");
+      scanf("%lf", &side);
+      printf("Area of the square: %.2f (cm)\n", square_area(side) );
+      break;
+
+      case 2:
+      printf("Enter the radius (cm): ");
+      scanf("%lf", &radius);
+      printf("Volume of the sphere: %.2f (cm)\n", sphere_volume(radius) );
+      break;
+
+      case 3:
+      printf("Enter the edge of the cube: ");
+      scanf("%lf", &edge);
+      printf("Surface area of the cube: %.2f (cm)\n", cube_surface_area(edge) );
+      break;
+
+      case 4:
+      printf("Goodbye!\n");
+    }
+    printf("\n");
+
+  // terminate the loop if the user has selected to quit
+  } while (option != 4);
+    
+  return 0;
+}
+
+
+as2_invest
+#include <stdio.h>
+
+int main(void)
+{
+  float initial, rate, contribution, interest, balance;
+  int years;
+
+  // Obtain the required input values from the user, perform input validation
+  do 
+  {
+    printf("Enter initial investment amount: ");
+    scanf("%f", &balance);
+    if (balance < 0) printf("Initial investment cannot be negative.\n");
+  } while (balance < 0);
+  do 
+  {
+    printf("Enter total years: ");
+    scanf("%d", &years);
+    if (years <= 0) printf("Years must be greater than zero.\n");
+  } while (years <= 0);
+
+  do 
+  {
+    printf("Enter return rate: ");
+    scanf("%f", &rate);  
+    if (rate < 0) printf("Rate cannot be negative.\n");  
+  } while (rate < 0);
+
+  do 
+  {
+    printf("Enter additional contribution per year: ");
+    scanf("%f", &contribution);  
+    if (contribution < 0) printf("Contribution cannot be negative.\n");
+  } while (contribution < 0);
+
+  // Create the investment returns table
+  printf("\n");
+  printf("Year      Start Balance       Interest            End Balance\n");
+  printf("**********************************************************************\n");
+  for (int i = 1; i <= years; i++)
+  {
+    interest = balance * (rate / 100);
+    printf("%-10d%-20.2f%-20.2f%-20.2f\n", i, balance, interest, (interest + balance) );
+    balance += interest + contribution;
+  }
+
+  return 0;
+}
